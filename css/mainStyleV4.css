@@ -1,0 +1,853 @@
+@charset "UTF-8";
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  font-size: 64px;
+  font-weight: bolder;
+  line-height: 2.5rem;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+h1 span.title {
+  text-shadow: 1px 1px 5px #b38b4e;
+}
+h1 span.slogan {
+  display: block;
+  text-align: right;
+  color: #b38b4e;
+  font-size: 28px;
+  font-weight: lighter;
+}
+
+p {
+  line-height: 1.8rem;
+}
+p.animatable {
+  margin: 50px auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.scrollSvg {
+  position: fixed;
+  max-width: 15px;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  cursor: pointer;
+  -webkit-animation-name: cursor-scroll;
+  animation-name: cursor-scroll;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  animation-direction: alternate-reverse;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+.scrollSvg:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.mainNav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: #b38b4e;
+  text-transform: uppercase;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  transition: all ease-in-out 400ms;
+  z-index: 3;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  width: 100%;
+  height: 10vh;
+  padding: 0;
+  margin: auto;
+}
+ul li {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-15px);
+  -webkit-animation-name: opacitySlideAnimation;
+  animation-name: opacitySlideAnimation;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: cubic-bezier(0.17, 0.66, 0.19, 0.84);
+  animation-timing-function: cubic-bezier(0.17, 0.66, 0.19, 0.84);
+}
+ul li.topLink {
+  -webkit-animation-delay: 1500ms;
+  animation-delay: 1500ms;
+}
+ul li.secondLink {
+  -webkit-animation-delay: 1700ms;
+  animation-delay: 1700ms;
+}
+ul li.thirdLink {
+  -webkit-animation-delay: 1800ms;
+  animation-delay: 1800ms;
+}
+ul li.fourthLink {
+  -webkit-animation-delay: 1900ms;
+  animation-delay: 1900ms;
+}
+ul li.fifthLink {
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
+}
+ul li:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: all cubic-bezier(0, 0, 0.58, 1) 150ms;
+  width: 100%;
+  margin: 0 auto;
+  height: 1px;
+  background-color: #b38b4e;
+}
+ul li:hover:after {
+  z-index: 2;
+  transition: all cubic-bezier(0, 0, 0.58, 1) 150ms;
+  transform: scaleX(1);
+}
+
+ul#topEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  background-color: black;
+  z-index: -1;
+  transition: all ease-in-out 400ms;
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+#imageView {
+  position: fixed;
+  top: 0;
+  z-index: -2;
+}
+#imageView #mainImage {
+  min-height: 100vh;
+  width: 100%;
+  transition: all ease-in-out 400ms;
+}
+#imageView #leftEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 5vw;
+  z-index: 3;
+  transform-origin: left;
+  transform: scaleX(0);
+  background-color: black;
+  transition: all ease-in-out 400ms;
+}
+#imageView #rightEffect {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 5vw;
+  z-index: 3;
+  transform-origin: right;
+  transform: scaleX(0);
+  background-color: black;
+  transition: all ease-in-out 400ms;
+}
+
+h2 {
+  text-align: center;
+  font-size: 29px;
+  font-weight: 300;
+}
+
+.separator {
+  position: relative;
+  height: 2px;
+  width: 50%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.separator .ssSeparator {
+  position: absolute;
+  width: 10vw;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #b38b4e;
+}
+.separator .modifier {
+  background-color: white;
+}
+
+section:not(.showView) {
+  background-color: white;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+section.presentation {
+  margin-top: 100vh;
+}
+
+div.video {
+  margin: auto;
+  text-align: center;
+}
+div.video video {
+  width: 80%;
+  max-width: 80%;
+}
+@media all and (max-width: 800px) {
+  div.video video {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+section#réalisations .gridRealisations {
+  display: grid;
+  grid-template: repeat(3, minmax(267px, 267px))/repeat(3, 1fr);
+  grid-auto-flow: row;
+  gap: 10px;
+}
+section#réalisations .gridRealisations div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+section#réalisations .gridRealisations div.one {
+  order: 1;
+}
+section#réalisations .gridRealisations div.two {
+  order: 2;
+}
+section#réalisations .gridRealisations div.three {
+  order: 3;
+}
+section#réalisations .gridRealisations div.four {
+  order: 4;
+}
+section#réalisations .gridRealisations div.five {
+  order: 5;
+}
+section#réalisations .gridRealisations div.six {
+  order: 6;
+}
+section#réalisations .gridRealisations div.seven {
+  order: 7;
+}
+section#réalisations .gridRealisations img {
+  min-width: 118%;
+  object-fit: cover;
+  -o-object-fit: cover;
+  transition: all ease-in-out 150ms;
+}
+section#réalisations .gridRealisations img:hover {
+  transform: scale(1.03);
+  transition: all ease-in-out 150ms;
+}
+section#réalisations .gridRealisations img.troisD {
+  min-width: 150%;
+}
+section#réalisations .gridRealisations .longOne {
+  grid-column: 2/4;
+}
+@media all and (min-width: 1351px) and (max-width: 1550px) {
+  section#réalisations .gridRealisations .longOne {
+    grid-column: auto;
+  }
+}
+section#réalisations .gridRealisations .longTwo {
+  grid-column: 1/3;
+}
+section#réalisations .gridRealisations .last {
+  grid-column: 1/3;
+}
+
+section.services {
+  color: white;
+  background-color: #b38b4e;
+}
+section.services h2 {
+  color: white;
+}
+section.services .grid3d {
+  display: grid;
+  grid-template: repeat(1, auto)/repeat(2, 1fr);
+  max-width: 100%;
+  gap: 10px;
+}
+section.services .grid3d figure {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section.services .grid3d figure figcaption {
+  margin: 5px 0;
+  text-align: center;
+}
+section.services .grid3d img {
+  max-width: 70%;
+  align-self: center;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+section.services .gridPrestations {
+  display: grid;
+  grid-template: 200px/repeat(4, 1fr);
+  margin-top: 50px;
+}
+section.services .gridPrestations .prestation {
+  text-align: center;
+}
+section.services .gridPrestations .prestation p {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+section.services .gridPrestations .prestation img {
+  max-width: 30%;
+  max-height: 100px;
+}
+
+section#contact p {
+  text-align: center;
+}
+section#contact .blocFormulaire form {
+  display: flex;
+  flex-direction: column;
+  max-width: 65%;
+  margin: auto;
+}
+section#contact .blocFormulaire span {
+  color: darkred;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+section#contact .blocFormulaire span.mailJavascript {
+  color: inherit;
+}
+section#contact .blocFormulaire label, section#contact .blocFormulaire input[type=submit] {
+  margin-top: 15px;
+}
+section#contact .blocFormulaire input, section#contact .blocFormulaire textarea {
+  padding-left: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: solid 1px #b38b4e;
+  border-radius: 2px;
+  font-family: inherit;
+}
+section#contact .blocFormulaire input[type=submit] {
+  position: relative;
+  border: solid #b38b4e 2px;
+  border-radius: 2px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  padding: 15px;
+  background-color: white;
+  cursor: pointer;
+  transition: all ease-in-out 150ms;
+}
+section#contact .blocFormulaire input[type=submit]:hover {
+  letter-spacing: 0.8rem;
+  transition: all ease-in-out 150ms;
+}
+section#contact .blocFormulaire .cnil {
+  font-size: 0.8rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  color: #b38b4e;
+  padding: 55px 0;
+  background-color: black;
+}
+footer div.gridFooterTop {
+  display: grid;
+  grid-template: 1fr/1fr 10fr;
+  row-gap: 20px;
+  width: auto;
+  margin: auto;
+}
+footer p, footer a {
+  text-align: left;
+  margin: 0;
+  align-self: flex-start;
+  line-height: inherit;
+}
+footer img {
+  max-width: 20px;
+  align-self: center;
+}
+footer div.gridFooterBottom {
+  display: grid;
+  grid-template: 1fr/repeat(3, 1fr);
+  width: auto;
+  text-align: center;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+}
+footer div.gridFooterBottom p, footer div.gridFooterBottom a {
+  text-align: center;
+}
+footer p.enterprise {
+  width: 100%;
+  text-align: center;
+}
+
+#upArrow {
+  position: fixed;
+  visibility: hidden;
+  bottom: 45px;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #b38b4e;
+  cursor: pointer;
+  transition: all ease-in-out 150ms;
+}
+#upArrow:hover {
+  transition: all ease-in-out 150ms;
+}
+#upArrow div {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+#upArrow div img {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: center;
+  transform: translate(50%, 50%);
+  width: 20px;
+  height: 20px;
+}
+
+#toggleNav {
+  display: none;
+  position: absolute;
+  top: 3vh;
+  right: 10%;
+  width: 35px;
+  height: 35px;
+  order: 3;
+  z-index: 3;
+}
+#toggleNav .line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  transform-origin: center;
+  transform: translateY(-50%);
+  background-color: #b38b4e;
+  transition: all 250ms 150ms;
+}
+#toggleNav .lineOne {
+  top: 25%;
+}
+#toggleNav .lineTwo {
+  top: 50%;
+}
+#toggleNav .lineThree {
+  top: 75%;
+}
+
+#toggleNav.active .lineTwo {
+  opacity: 0;
+}
+
+#toggleNav.active .lineOne {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+#toggleNav.active .lineThree {
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+#encart {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: #b38b4e;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  margin: 50px auto auto auto;
+  padding: 15px;
+  transform: rotate(-8deg);
+}
+
+@media all and (max-width: 767px) {
+  .mainNav {
+    height: 0;
+    border-bottom: none;
+  }
+
+  #toggleNav {
+    display: inherit;
+  }
+
+  ul {
+    height: auto;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: white;
+    transform-origin: top;
+    transform: scaleY(0);
+    border-bottom: solid 1px rgba(179, 139, 78, 0.5);
+    transition: all 200ms 150ms;
+  }
+  ul li {
+    padding: 20px;
+  }
+
+  ul#topEffect {
+    display: none;
+  }
+
+  #imageView #mainImage {
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 32px;
+    top: 50%;
+    width: 80%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  #leftEffect, #rightEffect {
+    display: none;
+  }
+
+  section:not(.showView) {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  section#réalisations .gridRealisations {
+    all: unset;
+    margin: 0 auto;
+    display: grid;
+    grid-template: repeat(1, 200px)/repeat(1, auto);
+    grid-auto-flow: column;
+    gap: 10px;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+  }
+  section#réalisations .gridRealisations div {
+    all: unset;
+  }
+  section#réalisations .gridRealisations .longOne {
+    all: unset;
+    grid-column: auto;
+    align-self: center;
+    scroll-snap-align: center;
+  }
+  section#réalisations .gridRealisations .longTwo {
+    all: unset;
+    grid-column: auto;
+    align-self: center;
+    scroll-snap-align: center;
+  }
+  section#réalisations .gridRealisations .last {
+    all: unset;
+    grid-column: auto;
+    align-self: center;
+    scroll-snap-align: center;
+  }
+  section#réalisations .gridRealisations > div {
+    all: unset;
+    max-height: 220px;
+    scroll-snap-align: center;
+  }
+  section#réalisations .gridRealisations img {
+    all: unset;
+    min-width: 80vw;
+    min-height: 220px;
+    max-width: 95%;
+    align-self: center;
+  }
+  section#réalisations .gridRealisations img:hover {
+    transform: none;
+  }
+  section#réalisations .gridRealisations img.troisD {
+    min-width: 120%;
+  }
+
+  section.services .grid3d {
+    grid-template: repeat(2, auto)/repeat(1, 1fr);
+  }
+  section.services .grid3d img {
+    max-width: 100%;
+  }
+  section.services .gridPrestations {
+    grid-template: repeat(4, 200px)/repeat(1, 1fr);
+  }
+
+  section#contact .blocFormulaire form {
+    max-width: 100%;
+  }
+
+  footer div.gridFooterTop {
+    grid-template: 1fr 1fr/1fr;
+    row-gap: 0;
+  }
+  footer p, footer a {
+    text-align: center;
+  }
+  footer img {
+    margin: 25px 5px 5px auto;
+    align-self: flex-end;
+  }
+  footer div.gridFooterBottom {
+    grid-template: 1fr/1fr;
+    margin-top: 25px;
+  }
+  footer div.gridFooterBottom p, footer div.gridFooterBottom a {
+    margin: 15px auto;
+  }
+}
+@media all and (min-width: 500px) and (max-width: 599px) {
+  section#réalisations .gridRealisations {
+    grid-template: repeat(1, 300px)/repeat(1, auto);
+    height: 300px;
+  }
+}
+@media all and (min-width: 600px) and (max-width: 699px) {
+  section#réalisations .gridRealisations {
+    grid-template-rows: repeat(1, 330px);
+  }
+  section#réalisations .gridRealisations img {
+    min-height: 330px;
+  }
+  section#réalisations .gridRealisations img.troisD {
+    min-width: 100%;
+  }
+}
+@media all and (min-width: 700px) and (max-width: 767px) {
+  section#réalisations .gridRealisations {
+    grid-template: repeat(1, 350px)/repeat(1, auto);
+  }
+  section#réalisations .gridRealisations img {
+    min-height: 350px;
+  }
+  section#réalisations .gridRealisations img.troisD {
+    min-width: auto;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1350px) {
+  section#réalisations .gridRealisations {
+    grid-template: repeat(5, 250px)/repeat(2, 1fr);
+  }
+  section#réalisations .gridRealisations img {
+    min-height: 250px;
+  }
+  section#réalisations .gridRealisations div.longOne {
+    grid-column-start: 2;
+    grid-column-end: -1;
+  }
+  section#réalisations .gridRealisations div.longTwo {
+    grid-column-start: 2;
+    grid-column-end: -1;
+  }
+  section#réalisations .gridRealisations div.last {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 900px) {
+  section#réalisations .gridRealisations {
+    grid-template: repeat(4, 200px)/repeat(2, 1fr);
+  }
+  section#réalisations .gridRealisations img {
+    min-height: 200px;
+    align-self: center;
+  }
+  section#réalisations .gridRealisations div.one {
+    order: 1;
+  }
+  section#réalisations .gridRealisations div.two {
+    order: 2;
+  }
+  section#réalisations .gridRealisations div.three {
+    order: 3;
+  }
+  section#réalisations .gridRealisations div.four {
+    order: 6;
+  }
+  section#réalisations .gridRealisations div.five {
+    order: 5;
+  }
+  section#réalisations .gridRealisations div.six {
+    order: 7;
+  }
+  section#réalisations .gridRealisations div.seven {
+    order: 4;
+  }
+}
+@media all and (min-width: 901px) and (max-width: 1550px) {
+  section#réalisations .gridRealisations {
+    grid-template: repeat(4, 200px)/repeat(2, 1fr);
+  }
+  section#réalisations .gridRealisations div.one {
+    order: 1;
+  }
+  section#réalisations .gridRealisations div.two {
+    order: 2;
+  }
+  section#réalisations .gridRealisations div.three {
+    order: 3;
+  }
+  section#réalisations .gridRealisations div.four {
+    order: 6;
+  }
+  section#réalisations .gridRealisations div.five {
+    order: 5;
+  }
+  section#réalisations .gridRealisations div.six {
+    order: 7;
+  }
+  section#réalisations .gridRealisations div.seven {
+    order: 4;
+  }
+  section#réalisations .gridRealisations img {
+    min-height: 250px;
+  }
+}
+@media all and (max-width: 768px) {
+  #imageView #mainImage {
+    width: 200%;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #imageView #mainImage {
+    width: 150%;
+  }
+}
+@media all and (min-width: 768px) and (max-height: 1366px) and (orientation: portrait) {
+  #imageView #mainImage {
+    width: 210%;
+  }
+}
+@-webkit-keyframes opacitySlideAnimation {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes opacitySlideAnimation {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes cursor-scroll {
+  0% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    transform: translateY(17px);
+    -webkit-transform: translateY(17px);
+  }
+}
+@keyframes cursor-scroll {
+  0% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    transform: translateY(17px);
+    -webkit-transform: translateY(17px);
+  }
+}
+.splitting .char {
+  -webkit-animation: slide-in 0.7s cubic-bezier(0.3, 0, 0.7, 1) both;
+  animation: slide-in 0.7s cubic-bezier(0.3, 0, 0.7, 1) both;
+  -webkit-animation-delay: calc(50ms * var(--char-index));
+  animation-delay: calc(50ms * var(--char-index));
+}
+
+@-webkit-keyframes slide-in {
+  from {
+    transform: scale(0.4) translateY(80%);
+    opacity: 0;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: scale(0.4) translateY(80%);
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=mainStyleV4.css.map */
