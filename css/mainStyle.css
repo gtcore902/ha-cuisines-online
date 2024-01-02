@@ -30,6 +30,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 h1 span.title {
+  margin-bottom: 25px;
   text-shadow: 1px 1px 5px #b38b4e;
 }
 h1 span.slogan {
@@ -38,6 +39,7 @@ h1 span.slogan {
   color: #b38b4e;
   font-size: 28px;
   font-weight: lighter;
+  margin-top: 15px;
 }
 
 p {
@@ -418,11 +420,17 @@ footer {
   background-color: black;
 }
 footer div.gridFooterTop {
-  display: grid;
-  grid-template: 1fr/1fr 10fr;
-  row-gap: 20px;
+  display: flex;
+  flex-direction: column;
   width: auto;
   margin: auto;
+  text-align: center;
+}
+footer div.gridFooterTop div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
 }
 footer p, footer a {
   text-align: left;
@@ -432,11 +440,12 @@ footer p, footer a {
 }
 footer img {
   max-width: 20px;
+  margin-right: 5px;
   align-self: center;
 }
 footer div.gridFooterBottom {
   display: grid;
-  grid-template: 1fr/repeat(3, 1fr);
+  grid-template: 1fr/repeat(2, 1fr);
   width: auto;
   text-align: center;
   -moz-column-gap: 20px;
@@ -545,11 +554,10 @@ footer p.enterprise {
     height: 0;
     border-bottom: none;
   }
-
   #toggleNav {
     display: inherit;
+    cursor: pointer;
   }
-
   ul {
     height: auto;
     flex-direction: column;
@@ -564,16 +572,13 @@ footer p.enterprise {
   ul li {
     padding: 20px;
   }
-
   ul#topEffect {
     display: none;
   }
-
   #imageView #mainImage {
     -o-object-fit: cover;
     object-fit: cover;
   }
-
   h1 {
     font-size: 32px;
     top: 50%;
@@ -581,16 +586,13 @@ footer p.enterprise {
     padding-left: 5%;
     padding-right: 5%;
   }
-
   #leftEffect, #rightEffect {
     display: none;
   }
-
   section:not(.showView) {
     padding-left: 5%;
     padding-right: 5%;
   }
-
   section#réalisations .gridRealisations {
     all: unset;
     margin: 0 auto;
@@ -642,7 +644,6 @@ footer p.enterprise {
   section#réalisations .gridRealisations img.troisD {
     min-width: 120%;
   }
-
   section.services .grid3d {
     grid-template: repeat(2, auto)/repeat(1, 1fr);
   }
@@ -652,21 +653,14 @@ footer p.enterprise {
   section.services .gridPrestations {
     grid-template: repeat(4, 200px)/repeat(1, 1fr);
   }
-
   section#contact .blocFormulaire form {
     max-width: 100%;
   }
-
   footer div.gridFooterTop {
-    grid-template: 1fr 1fr/1fr;
-    row-gap: 0;
+    margin: 20px auto;
   }
   footer p, footer a {
     text-align: center;
-  }
-  footer img {
-    margin: 25px 5px 5px auto;
-    align-self: flex-end;
   }
   footer div.gridFooterBottom {
     grid-template: 1fr/1fr;
@@ -850,4 +844,4 @@ footer p.enterprise {
   }
 }
 
-/*# sourceMappingURL=mainStyleV4.css.map */
+/*# sourceMappingURL=mainStyle.css.map */

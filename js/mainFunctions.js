@@ -87,7 +87,6 @@ window.addEventListener('load', () => {
 })
   upArrow.addEventListener('click', () => {
       window.scrollTo(0, 0);
-      // window.location.href = '/';
     })
 })
 
@@ -95,12 +94,10 @@ window.addEventListener('load', () => {
 window.addEventListener("load", function () {
       let target = document.querySelectorAll('.mailJavascript');
       for (var element of target) {
-        let name = "contact" ;
-        let domain = "contact.com" ;
-        // let mailJavascript = element;
+        let name = "fake" ;
+        let domain = "fakemail.com" ;
         let newAhref = document.createElement('a');
         newAhref.style.textDecoration = "none";
-        // newAhref.style.color = "#555555";
         newAhref.style.color = "inherit";
         newAhref.style.display = "inline-block";
         newAhref.style.animation = "none";
@@ -124,10 +121,7 @@ window.addEventListener('load', function() {
   // play video on scroll
   let video = document.querySelector('video');
   let witness = false;
-  // console.log(`sizePage : ${sizePage}`);
   document.addEventListener('scroll', function() {
-    // console.log(`sizePage : ${sizePage}`);
-    // console.log(`element bottom : ${video.getBoundingClientRect().bottom}`);
     if (video.getBoundingClientRect().bottom <= sizePage) {
       if (witness == false) {
         video.play().then(witness = true);

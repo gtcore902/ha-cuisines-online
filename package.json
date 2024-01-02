@@ -1,0 +1,11 @@
+{
+  "name": "ha_cuisines_githubpages",
+  "version": "1.0.0",
+  "description": "Landing page demo of a kitchen designer website :sunglasses:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
